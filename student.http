@@ -1,0 +1,184 @@
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": " pavi",
+    "age": 21,
+    "department": "CSE"
+}
+
+###.
+PUT http://localhost:8080/students/2
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "Rahul",
+    "age": 21,
+    "department": "CSE"
+}
+###
+###
+
+DELETE http://localhost:8080/students/1
+
+###
+###
+
+GET http://localhost:8080/students
+
+###
+###
+
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+    "id": 10,
+    "name": "",
+    "age": 15,
+    "department": ""
+
+    
+}
+###
+###
+GET http://localhost:8080/students/department/CSE
+
+###
+GET /students/search/{name}
+
+###
+GET http://localhost:8080/students/search/avi
+
+###
+GET http://localhost:8080/students/page?page=0&size=2
+
+###
+GET http://localhost:8080/students/page?page=1&size=2
+
+###
+GET http://localhost:8080/students/sort/name
+
+###
+GET http://localhost:8080/students/sort/department
+
+###
+GET http://localhost:8080/students/sort/age
+
+###
+GET http://localhost:8080/students/page?page=0&size=2&sort=name 
+
+###
+GET http://localhost:8080/students/page?page=0&size=2&sort=localhost:8080/students/department
+
+###
+GET http://localhost:8080/students
+###
+GET http://localhost:8080/students
+Authorization: Basic c2FuamVldjpwYXNzd29yZDEyMw==
+
+###
+GET http://localhost:8080/token
+
+###
+GET http://localhost:8080/students
+Authorization: Bearer your_generated_token
+
+###
+GET http://localhost:8080/students
+Authorization: Bearer abc123
+
+###
+GET http://localhost:8080/students
+Authorization: Bearer YOUR_TOKEN
+
+###
+GET http://localhost:8080/students
+Authorization: Bearer .eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW5qZWV2IiwiaWF0IjoxNzg1MzQzNjU1LCJleHAiOjE3ODUzNDcyNTV9.xTpYim0cRlD9CMzYVHcXP3yZRJCzvDABAOET_9pf0M8
+
+###
+GET http://localhost:8080/token
+Authorization: Basic sanjeev password123
+
+###
+GET http://localhost:8080/token
+###
+GET http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW5qZWV2IiwiaWF0IjoxNzg1MzQ0ODQxLCJleHAiOjE3ODUzNDg0NDF9.ZLG3j2_Oa0n3MXlWrzkfgoh-
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "password123"
+}
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "password123"
+}
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "wrongpassword"
+}
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "password123"
+}
+
+###
+GET http://localhost:8080/token
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "newpassword"
+}
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+    "username": "pavi",
+    "password": "pavi123",
+    "role": "USER"
+}
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+    "username": "rahul",
+    "password": "rahul123",
+    "role": "USER"
+}
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "rahul",
+    "password": "rahul123"
+}
