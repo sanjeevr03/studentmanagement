@@ -15,8 +15,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import com.sanjeev.studentmanagement.service.CustomUserDetailsService;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationProvider;
-
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 @Configuration
+@EnableMethodSecurity   
 public class SecurityConfig {
         @Autowired
 private JwtAuthenticationFilter jwtAuthenticationFilter;

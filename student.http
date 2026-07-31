@@ -182,3 +182,35 @@ Content-Type: application/json
     "username": "rahul",
     "password": "rahul123"
 }
+###
+POST /students
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "sanjeev",
+    "password": "password123"
+}
+###
+POST http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW5qZWV2IiwiaWF0IjoxNzg1NDI5MDE1LCJleHAiOjE3ODU0MzI2MTV9.YxOKtGMoVmJC1gdLsORtj7EUJxJ7r1uAUPFzMTMyTYQ
+Content-Type: application/json
+
+{
+    "name": "Role Test",
+    "department": "CSE"
+}
+###
+GET http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW5qZWV2IiwiaWF0IjoxNzg1NDI5MDE1LCJleHAiOjE3ODU0MzI2MTV9.YxOKtGMoVmJC1gdLsORtj7EUJxJ7r1uAUPFzMTMyTYQ
+###
+POST http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW5qZWV2IiwiaWF0IjoxNzg1NDc4NjEyLCJleHAiOjE3ODU0ODIyMTJ9.ko4AN051NZyurIWmBzrYzwBiD2wBS2EVU1_0dsEZXcE
+Content-Type: application/json
+
+{
+    "name": "Role Test",
+    "age": 21,
+    "department": "CSE"
+}
