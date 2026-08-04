@@ -29,15 +29,21 @@ private CustomUserDetailsService customUserDetailsService;
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
 
-      http
+   http
     .csrf(csrf -> csrf.disable())
     .authenticationProvider(authenticationProvider())
-    .authorizeHttpRequests(auth -> auth
-           .requestMatchers("/login", "/register").permitAll()
-            .anyRequest().authenticated())
+.authorizeHttpRequests(auth -> auth
+        .requestMatchers(
+                "/login",
+                "/register",
+                "/swagger-ui/**",
+                "/v3/api-docs/**",
+                "/swagger-ui.html"
+        ).permitAll()
+        .anyRequest().authenticated())
     .addFilterBefore(jwtAuthenticationFilter,
             UsernamePasswordAuthenticationFilter.class)
-    .httpBasic(Customizer.withDefaults());
+    .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }

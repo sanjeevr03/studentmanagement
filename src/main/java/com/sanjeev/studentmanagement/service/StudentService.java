@@ -6,13 +6,15 @@ import com.sanjeev.studentmanagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sanjeev.studentmanagement.dto.StudentDTO;
 import java.util.ArrayList;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -22,6 +24,8 @@ public class StudentService {
     private StudentRepository studentRepository;
     @Autowired
 private ModelMapper modelMapper;
+@Autowired
+private FileStorageService fileStorageService;
 private static final Logger logger =
         LoggerFactory.getLogger(StudentService.class);
 
@@ -149,5 +153,19 @@ public List<StudentDTO> getStudentsSorted(String field) {
     }
 
     return studentDTOList;
+}
+public Student uploadStudentImage(Integer id,
+                                  MultipartFile file) throws IOException {
+
+    Student student = studentRepository.findById(id)
+            .orElseThrow(() ->
+                    new StudentNotFoundException(
+                            "Student with ID " + id + " not found"));
+
+    String filePath = fileStorageService.saveFile(file);
+
+    student.setImageUrl(filePath);
+
+    return studentRepository.save(student);
 }
 }

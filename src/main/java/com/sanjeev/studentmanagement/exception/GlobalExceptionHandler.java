@@ -30,4 +30,15 @@ public ResponseEntity<Map<String, String>> handleValidationException(
 
     return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 }
+@ExceptionHandler(Exception.class)
+public ResponseEntity<Map<String, Object>> handleGlobalException(Exception ex) {
+
+    Map<String, Object> error = new HashMap<>();
+
+    error.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+    error.put("error", "Internal Server Error");
+    error.put("message", ex.getMessage());
+
+    return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+}
 }

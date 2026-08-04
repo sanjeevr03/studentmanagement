@@ -214,3 +214,13 @@ Content-Type: application/json
     "age": 21,
     "department": "CSE"
 }
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test123",
+  "role": "USER"
+}
