@@ -1,170 +1,368 @@
 # 🎓 Student Management System
 
-A secure **Student Management REST API** built using **Spring Boot**, **Spring Security**, **JWT Authentication**, **BCrypt Password Encryption**, and **MySQL**.
+<p align="center">
 
-This project demonstrates a complete backend application with secure authentication, authorization-ready architecture, and CRUD operations for managing students.
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen?style=for-the-badge&logo=springboot)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6-green?style=for-the-badge&logo=springsecurity)
+![JWT](https://img.shields.io/badge/JWT-Authentication-blue?style=for-the-badge)
+![Hibernate](https://img.shields.io/badge/Hibernate-JPA-brown?style=for-the-badge&logo=hibernate)
+![MySQL](https://img.shields.io/badge/MySQL-8-blue?style=for-the-badge&logo=mysql)
+![Docker](https://img.shields.io/badge/Docker-Container-blue?style=for-the-badge&logo=docker)
+![Swagger](https://img.shields.io/badge/Swagger-API-green?style=for-the-badge&logo=swagger)
+
+</p>
 
 ---
 
-## 🚀 Features
+## 📌 Overview
 
-### Student Management
-- ✅ Add Student
-- ✅ View All Students
-- ✅ View Student by ID
-- ✅ Update Student
-- ✅ Delete Student
+The **Student Management System** is a secure RESTful backend application developed using **Spring Boot**.
 
-### Authentication & Security
-- ✅ User Registration
-- ✅ User Login
-- ✅ JWT Token Authentication
+It demonstrates modern backend development practices including:
+
+- JWT Authentication
+- Spring Security
+- CRUD REST APIs
+- File Upload
+- Docker
+- Swagger Documentation
+- MySQL
+- H2 Database
+- Environment Variables
+- Pagination
+- Sorting
+- Search APIs
+
+This project was built as a portfolio project to demonstrate enterprise-level backend development skills.
+
+---
+
+# 🚀 Features
+
+- ✅ JWT Authentication
+- ✅ User Registration & Login
 - ✅ BCrypt Password Encryption
-- ✅ Protected REST APIs
-- ✅ Spring Security Integration
+- ✅ Student CRUD Operations
+- ✅ Search Students
+- ✅ Pagination
+- ✅ Sorting
+- ✅ File Upload
+- ✅ MySQL Integration
+- ✅ H2 Database Support
+- ✅ Swagger Documentation
+- ✅ Spring Security
+- ✅ Global Exception Handling
+- ✅ Input Validation
+- ✅ Docker Support
+- ✅ Docker Compose
+- ✅ Environment Variable Configuration
+
+---
+
+# 🏗️ Architecture
+
+```text
+                +----------------------+
+                |     Client / UI      |
+                +----------+-----------+
+                           |
+                           | REST API
+                           |
+                +----------v-----------+
+                |   Spring Boot API    |
+                +----------+-----------+
+                           |
+              +------------+------------+
+              |                         |
+      Spring Security              File Upload
+              |                         |
+              +------------+------------+
+                           |
+                     Hibernate / JPA
+                           |
+                      MySQL Database
+```
+
+---
+
+# 🛠️ Tech Stack
+
+### Backend
+
+- Java 21
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Hibernate
+- JWT
+- Maven
 
 ### Database
-- ✅ MySQL Integration
-- ✅ Spring Data JPA
-- ✅ Hibernate ORM
+
+- MySQL
+- H2 Database
+
+### Documentation
+
+- Swagger / OpenAPI
+
+### DevOps
+
+- Docker
+- Docker Compose
+
+### Tools
+
+- Git
+- GitHub
+- VS Code
 
 ---
 
-## 🛠 Tech Stack
-
-| Technology | Used |
-|------------|------|
-| Java | 21 |
-| Spring Boot | 4 |
-| Spring Security | ✔ |
-| Spring Data JPA | ✔ |
-| Hibernate | ✔ |
-| JWT | ✔ |
-| BCrypt | ✔ |
-| MySQL | ✔ |
-| Maven | ✔ |
-| REST API | ✔ |
-
----
-
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
-src
- ├── config
- ├── controller
- ├── dto
- ├── exception
- ├── model
- ├── repository
- ├── security
- ├── service
- └── resources
+studentmanagement
+│
+├── src
+│   ├── main
+│   │   ├── controller
+│   │   ├── service
+│   │   ├── repository
+│   │   ├── model
+│   │   ├── security
+│   │   ├── exception
+│   │   └── resources
+│   │
+│   └── test
+│
+├── uploads
+├── Dockerfile
+├── docker-compose.yml
+├── pom.xml
+└── README.md
 ```
 
 ---
 
-## 🔑 API Endpoints
+# 🔐 Authentication APIs
 
-### Authentication
+## Register
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/register` | Register a new user |
-| POST | `/login` | Login and receive JWT |
+```
+POST /auth/register
+```
+
+## Login
+
+```
+POST /auth/login
+```
+
+After successful login a JWT token is generated.
+
+Use
+
+```
+Authorization: Bearer YOUR_TOKEN
+```
 
 ---
 
-### Students
+# 📚 Student APIs
 
 | Method | Endpoint | Description |
 |---------|----------|-------------|
 | GET | `/students` | Get all students |
 | GET | `/students/{id}` | Get student by ID |
-| POST | `/students` | Add student |
+| POST | `/students` | Create student |
 | PUT | `/students/{id}` | Update student |
 | DELETE | `/students/{id}` | Delete student |
 
 ---
 
-## 🔐 Authentication
+# 📄 Pagination
 
-After successful login, the API returns a JWT token.
-
-Example:
+Example
 
 ```
-Authorization: Bearer YOUR_JWT_TOKEN
+GET /students?page=0&size=5
 ```
-
-All protected endpoints require this header.
 
 ---
 
-## 🗄 Database
+# 🔍 Search
 
-MySQL is used as the backend database.
+Example
 
-Tables:
-
-- Users
-- Students
-
-Passwords are securely stored using **BCrypt hashing**.
+```
+GET /students/search?keyword=John
+```
 
 ---
 
-## ▶️ Running the Project
+# ↕️ Sorting
 
-Clone the repository
+Example
+
+```
+GET /students/sort?field=name
+```
+
+---
+
+# 📤 File Upload
+
+Upload student image
+
+```
+POST /students/{id}/upload
+```
+
+---
+
+# 📖 Swagger Documentation
+
+After running the application
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+---
+
+# 🗄️ Database
+
+Supported databases
+
+- MySQL
+- H2 Database
+
+Database credentials are managed securely using **Environment Variables**.
+
+---
+
+# ⚙️ Environment Variables
+
+Configure the following variables before running the application:
+
+```
+SPRING_DATASOURCE_URL
+SPRING_DATASOURCE_USERNAME
+SPRING_DATASOURCE_PASSWORD
+MYSQL_ROOT_PASSWORD
+```
+
+---
+
+# ▶️ Running Locally
+
+Clone repository
 
 ```bash
 git clone https://github.com/sanjeevr03/studentmanagement.git
 ```
 
-Navigate into the project
+Navigate into project
 
 ```bash
 cd studentmanagement
 ```
 
-Configure your MySQL database in:
-
-```
-src/main/resources/application.properties
-```
-
-Run the project
+Run application
 
 ```bash
 mvn spring-boot:run
 ```
 
+Application
+
+```
+http://localhost:8080
+```
+
+Swagger
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
 ---
 
-## 📌 Future Improvements
+# 🐳 Running with Docker
 
-- Role-Based Authorization (ADMIN / USER)
-- React Frontend
-- Swagger/OpenAPI Documentation
-- Docker Support
-- Deployment to Cloud
+Build
+
+```bash
+docker compose up --build
+```
+
+Stop
+
+```bash
+docker compose down
+```
+
+---
+
+# 📸 Screenshots
+
+> Add screenshots after deployment.
+
+Example:
+
+```
+docs/
+├── login.png
+├── swagger.png
+├── students.png
+```
+
+Then display them like:
+
+```markdown
+## Swagger UI
+
+![Swagger](docs/swagger.png)
+
+## Login
+
+![Login](docs/login.png)
+
+## Student APIs
+
+![Students](docs/students.png)
+```
+
+---
+
+# 📌 Future Improvements
+
+- Role Based Authorization
+- Serve Uploaded Images
 - Unit Testing
-- Refresh Tokens
-- Pagination & Sorting
+- Integration Testing
+- CI/CD Pipeline
+- Cloud Deployment
+- React Frontend
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-**Sanjeev R**
+## Sanjeev R
 
-GitHub:
+**GitHub**
 
 https://github.com/sanjeevr03
 
+**LinkedIn**
+
+https://www.linkedin.com/in/sanjeev010
+
 ---
 
-## ⭐ If you like this project
+# ⭐ Support
 
-Please consider giving this repository a ⭐ on GitHub.
+If you found this project useful, consider giving it a ⭐ on GitHub.
